@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Chesster/lichess.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">Chesster/</a> lichess.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">42.67% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>32/75</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">15.79% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>3/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">36.36% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">43.24% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>32/74</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">156×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//------------------------------------------------------------------------------
+// Lichess helpers
+//------------------------------------------------------------------------------
+var http = require("./http.js");
+var moment = require("moment");
+var Q = require("q");
+&nbsp;
+var MILISECOND = 1;
+var SECONDS = 1000 * MILISECOND;
+var MINUTES = 60 * SECONDS;
+&nbsp;
+//------------------------------------------------------------------------------
+// A lichess API queue.
+//
+// Provides two queues, a background queue and main queue. Use the main queue
+// for any processing in response to a user message, as the main queue takes
+// priority.
+//
+// Use the background queue for any background updating, like player ratings.
+//
+// Also attempts to rate limit itself according to the lichess API guidelines
+// a max of one request every 2 seconds (this is actually a bit slower), and
+// it will wait a minute if it receives a 429.
+//------------------------------------------------------------------------------
+var makeRequest = (function() {
+    // The background queue will be processed when there is nothing else to process
+    var backgroundQueue = [];
+    // The mainQueue will be processed first.
+    var mainQueue = [];
+    var lastRequest = moment.utc();
+<span class="fstat-no" title="function not covered" >    function makeRequest(url, isJSON, isBackground) {</span>
+<span class="cstat-no" title="statement not covered" >        var deferred = Q.defer();</span>
+<span class="cstat-no" title="statement not covered" >        if (isBackground) {</span>
+<span class="cstat-no" title="statement not covered" >            backgroundQueue.push([url, isJSON, deferred]);</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            mainQueue.push([url, isJSON, deferred]);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return deferred.promise;</span>
+    }
+    function processRequest() {
+        var request = null;
+        // The default delay between requests is 2 seconds
+        var requestDelay = 2 * SECONDS;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (mainQueue.length &gt; 0) {
+<span class="cstat-no" title="statement not covered" >            request = mainQueue.shift();</span>
+        } else <span class="missing-if-branch" title="if path not taken" >I</span>if (backgroundQueue.length &gt; 0) {
+<span class="cstat-no" title="statement not covered" >            request = backgroundQueue.shift();</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (request) {
+<span class="cstat-no" title="statement not covered" >            var url = request[0];</span>
+<span class="cstat-no" title="statement not covered" >            var isJSON = request[1];</span>
+<span class="cstat-no" title="statement not covered" >            var deferred = request[2];</span>
+<span class="cstat-no" title="statement not covered" >            var promise = null;</span>
+<span class="cstat-no" title="statement not covered" >            if (isJSON)  {</span>
+<span class="cstat-no" title="statement not covered" >                promise = http.fetchURLIntoJSON(url);</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                promise = http.fetchURL(url);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            promise.then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (result.response.statusCode == 429) {</span>
+<span class="cstat-no" title="statement not covered" >                    requestDelay = 60 * SECONDS;</span>
+<span class="cstat-no" title="statement not covered" >                    console.log("Last request status was a 429 - we will wait 60 seconds before our next request");</span>
+                }
+<span class="cstat-no" title="statement not covered" >                deferred.resolve(result);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                setTimeout(processRequest, requestDelay);</span>
+            }, <span class="fstat-no" title="function not covered" >function(error) {</span>
+<span class="cstat-no" title="statement not covered" >                console.error("Request failed: " + JSON.stringify(error));</span>
+<span class="cstat-no" title="statement not covered" >                setTimeout(processRequest, requestDelay);</span>
+<span class="cstat-no" title="statement not covered" >                deferred.reject(error);</span>
+            });
+        } else {
+            setTimeout(processRequest, requestDelay);
+        }
+    }
+    processRequest();
+    return makeRequest;
+})();
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getPlayerByName(name, isBackground){</span>
+<span class="cstat-no" title="statement not covered" >    var url = "http://en.lichess.org/api/user/" + name;</span>
+<span class="cstat-no" title="statement not covered" >    return makeRequest(url, true, isBackground);</span>
+}
+&nbsp;
+//------------------------------------------------------------------------------
+// Get a player rating, but only ping lichess once every 30 minutes for each
+// player.  It's supposed to be a classical rating, so it probably won't update
+// that often in a 30 minutes period. Besides, this function is not intended
+// for people to show off their latest rating.  If they wan to do that they
+// can type it in themselves.
+//------------------------------------------------------------------------------
+var ratingFunctions = (function() {
+    var _playerRatings = {};
+    var _playerRatingsLastUpdated = {};
+    var _playerRatingPromises = {};
+<span class="fstat-no" title="function not covered" >    function getPlayerRating(name, isBackground){</span>
+        // If we have updated recently, just return this rating.
+<span class="cstat-no" title="statement not covered" >        var _30MinsAgo = moment.utc().subtract(30, 'minutes');</span>
+<span class="cstat-no" title="statement not covered" >        var lastUpdated = _playerRatingsLastUpdated[name.toLowerCase()];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var promise = _playerRatingPromises[name.toLowerCase()];</span>
+        // If we don't have a recent rating for them and we aren't
+        // already asking for one.
+<span class="cstat-no" title="statement not covered" >        if ((!lastUpdated || lastUpdated.isBefore(_30MinsAgo)) &amp;&amp; !promise) {</span>
+&nbsp;
+            // Else, 
+<span class="cstat-no" title="statement not covered" >            var background = "";</span>
+<span class="cstat-no" title="statement not covered" >            if (isBackground) {</span>
+<span class="cstat-no" title="statement not covered" >                background = " [in the background]";</span>
+            }
+<span class="cstat-no" title="statement not covered" >            console.log("Requesting rating update for " + name + background);</span>
+<span class="cstat-no" title="statement not covered" >            promise = getPlayerByName(name, isBackground).then(<span class="fstat-no" title="function not covered" >function(result) {</span></span>
+<span class="cstat-no" title="statement not covered" >                var rating = result.json.perfs.classical.rating;</span>
+<span class="cstat-no" title="statement not covered" >                _playerRatings[name.toLowerCase()] = rating;</span>
+<span class="cstat-no" title="statement not covered" >                _playerRatingsLastUpdated[name.toLowerCase()] = moment.utc();</span>
+<span class="cstat-no" title="statement not covered" >                _playerRatingPromises[name.toLowerCase()] = undefined;</span>
+<span class="cstat-no" title="statement not covered" >                console.log("Got updated rating for {name}: {rating}".format({</span>
+                    name: name,
+                    rating: rating
+                }));
+<span class="cstat-no" title="statement not covered" >                return rating;</span>
+            });
+<span class="cstat-no" title="statement not covered" >            _playerRatingPromises[name.toLowerCase()] = promise;</span>
+        }
+&nbsp;
+        // Always return the latest one that we already have.
+<span class="cstat-no" title="statement not covered" >        return Q.fcall(<span class="fstat-no" title="function not covered" >function() {</span> <span class="cstat-no" title="statement not covered" >return _playerRatings[name.toLowerCase()]; </span>});</span>
+    }
+    function setPlayerRating(name, rating) {
+        _playerRatings[name.toLowerCase()] = rating;
+    }
+    return {
+        getPlayerRating: getPlayerRating,
+        setPlayerRating: setPlayerRating
+    };
+})();
+&nbsp;
+&nbsp;
+&nbsp;
+module.exports.getPlayerRating = ratingFunctions.getPlayerRating
+module.exports.setPlayerRating = ratingFunctions.setPlayerRating
+module.exports.getPlayerByName = getPlayerByName
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 18 2016 16:23:11 GMT-0400 (EDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

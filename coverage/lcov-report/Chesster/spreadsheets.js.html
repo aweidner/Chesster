@@ -1,0 +1,2138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Chesster/spreadsheets.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">Chesster/</a> spreadsheets.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">27.12% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>80/295</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">9.71% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/103</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>12/48</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">27.49% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>80/291</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">50×</span>
+<span class="cline-any cline-yes">250×</span>
+<span class="cline-any cline-yes">250×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2800×</span>
+<span class="cline-any cline-yes">200×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2800×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">198×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var moment = require("moment");
+var fuzzy_match = require("./fuzzy_match");
+var GoogleSpreadsheet = require("google-spreadsheet");
+var _ = require("underscore");
+&nbsp;
+var EXTREMA_DEFAULTS = {
+    'isoWeekday': 2,
+    'hour': 0,
+    'minute': 0,
+    'warningHours': 1,
+};
+var BASE_DATE_FORMATS = [
+    "YYYY-MM-DD MM DD",
+    "YYYY-MM DD",
+    "YYYY-MM-DD",
+    "YYYY-MM-D",
+    "YYYY-M-DD",
+    "YYYY-M-D",
+    "YY-MM-DD",
+    "YY-MM-D",
+    "YY-M-DD",
+    "YY-M-D",
+    "MM-DD-YYYY",
+    "MM-D-YYYY",
+    "M-DD-YYYY",
+    "M-D-YYYY",
+    "MM-DD-YY",
+    "MM-D-YY",
+    "M-DD-YY",
+    "M-D-YY",
+    "YYYY-DD-MM",
+    "YYYY-D-MM",
+    "YYYY-DD-M",
+    "YYYY-D-M",
+    "YY-DD-MM",
+    "YY-D-MM",
+    "YY-DD-M",
+    "YY-D-M",
+    "DD-MM-YYYY",
+    "D-MM-YYYY",
+    "DD-M-YYYY",
+    "D-M-YYYY",
+    "DD-MM-YY",
+    "D-MM-YY",
+    "DD-M-YY",
+    "D-M-YY",
+    "YYYY-MMMM DD",
+    "YY-MMMM DD",
+    "MMMM DD YYYY",
+    "MMMM DD YY",
+    "YYYY-DD MMMM",
+    "YY-DD MMMM",
+    "DD MMMM YYYY",
+    "DD MMMM YY",
+    "YYYY-MMMM D",
+    "YY-MMMM D",
+    "MMMM D YYYY",
+    "MMMM D YY",
+    "YYYY-D MMMM",
+    "YY-D MMMM",
+    "D MMMM YYYY",
+    "D MMMM YY",
+];
+var BASE_TIME_FORMATS = [
+    "HHmm",
+    "Hmm",
+    "HH-mm",
+    "H-mm",
+    "HH"
+];
+var DATE_FORMATS = [
+];
+BASE_DATE_FORMATS.forEach(function(dateFormat) {
+    BASE_TIME_FORMATS.forEach(function(timeFormat) {
+        DATE_FORMATS.push(dateFormat + " " + timeFormat);
+        DATE_FORMATS.push(timeFormat + " " + dateFormat);
+    });
+});
+var WORDS_TO_IGNORE = [
+    "",
+    "-",
+    "–",
+    "at",
+    "on",
+    "gmt",
+    "gmt.",
+    "gmt:",
+    "rescheduled",
+    "reschedule",
+    "reschedule:",
+    "to",
+    "v",
+    "vs",
+    "versus",
+    "white",
+    "black",
+    "pieces"
+];
+&nbsp;
+var VALID_RESULTS = {
+    "0-0":"0-0",
+    "1-0":"1-0",
+    "0-1":"0-1",
+    "1/2-1/2":"1/2-1/2",
+    "0.5-0.5":"1/2-1/2",
+    "1X-0F":"1X-0F",
+    "0F-1X":"0F-1X",
+    "0F-0F":"0F-0F",
+    "1/2Z-1/2Z":"1/2Z-1/2Z",
+    "0.5Z-0.5Z":"1/2Z-1/2Z",
+    "DRAW":"1/2-1/2",
+    "DREW":"1/2-1/2",
+    "GIRI":"1/2-1/2"
+};
+&nbsp;
+// A scheduling error (as opposed to other errors)
+<span class="fstat-no" title="function not covered" >function ScheduleParsingError () {</span>}
+ScheduleParsingError.prototype = new Error();
+<span class="fstat-no" title="function not covered" >function PairingError () {</span>}
+PairingError.prototype = new Error();
+&nbsp;
+// Get an appropriate set of base tokens for the scheduling messages
+<span class="fstat-no" title="function not covered" >function getTokensScheduling(inputString){</span>
+    // Do some basic preprocessing
+    // Replace non-date punctuation/symbols with spaces
+<span class="cstat-no" title="statement not covered" >    inputString = inputString.replace(/[@,\(\)]/g, ' ');</span>
+<span class="cstat-no" title="statement not covered" >    inputString = inputString.replace(/[&lt;\&gt;]/g, '');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var parts = _.map(inputString.split(" "), <span class="fstat-no" title="function not covered" >function(item) {</span></span>
+        // Remove . and / and : and - from the beginning and end of the word
+<span class="cstat-no" title="statement not covered" >        item = item.replace(/^[:\.\/-]/g, '');</span>
+<span class="cstat-no" title="statement not covered" >        item = item.replace(/[:\.\/-]$/g, '');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return item;</span>
+    });
+<span class="cstat-no" title="statement not covered" >    parts = _.filter(parts, <span class="fstat-no" title="function not covered" >function(i) {</span> <span class="cstat-no" title="statement not covered" >return i.length &gt; 0; </span>});</span>
+<span class="cstat-no" title="statement not covered" >    parts = _.filter(parts, <span class="fstat-no" title="function not covered" >function(i) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return WORDS_TO_IGNORE.indexOf(i.toLowerCase()) == -1;</span>
+    });
+<span class="cstat-no" title="statement not covered" >    return parts;</span>
+}
+&nbsp;
+// Take the string they posted and turn it into a set of possible date
+// strings by doing things like:
+//
+// Unifying the punctuation.
+// removing gmt/utc
+// Adding the current-year
+// replacing day of the week tokens with the appropriate date format
+<span class="fstat-no" title="function not covered" >function getPossibleDateStrings(dateString, extrema) {</span>
+<span class="cstat-no" title="statement not covered" >    var dateStrings = [];</span>
+&nbsp;
+    // Unify some common stuff first.
+    //
+    // Change /.: to -
+<span class="cstat-no" title="statement not covered" >    dateString = dateString.replace(/[\/:\.]/g, '-');</span>
+<span class="cstat-no" title="statement not covered" >    dateString = dateString.toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >    dateString = dateString.replace(/gmt/g, "");</span>
+<span class="cstat-no" title="statement not covered" >    dateString = dateString.replace(/utc/g, "");</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var dateNameMappings = {};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var cur = extrema.start.clone();</span>
+<span class="cstat-no" title="statement not covered" >    var now = moment.utc();</span>
+<span class="cstat-no" title="statement not covered" >    while (!cur.isAfter(extrema.end)) {</span>
+<span class="cstat-no" title="statement not covered" >        var monthDay = cur.format("MM-DD");</span>
+        // Deal with a couple of formats that moment doesn't produce but are used.
+<span class="cstat-no" title="statement not covered" >        if (cur.format("dddd") == "Thursday") {</span>
+<span class="cstat-no" title="statement not covered" >            dateNameMappings["thurs"] = monthDay;</span>
+        } <span class="cstat-no" title="statement not covered" >if (cur.format("dddd") == "Wednesday") {</span>
+<span class="cstat-no" title="statement not covered" >            dateNameMappings["weds"] = monthDay;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        dateNameMappings[cur.format("dd").toLowerCase()] = monthDay;</span>
+<span class="cstat-no" title="statement not covered" >        dateNameMappings[cur.format("ddd").toLowerCase()] = monthDay;</span>
+<span class="cstat-no" title="statement not covered" >        dateNameMappings[cur.format("dddd").toLowerCase()] = monthDay;</span>
+<span class="cstat-no" title="statement not covered" >        dateNameMappings[cur.format("Do").toLowerCase()] = cur.format("DD");</span>
+<span class="cstat-no" title="statement not covered" >        var month = cur.format("MM");</span>
+<span class="cstat-no" title="statement not covered" >        dateNameMappings[cur.format("MMM").toLowerCase()] = month;</span>
+<span class="cstat-no" title="statement not covered" >        dateNameMappings[cur.format("MMMM").toLowerCase()] = month;</span>
+<span class="cstat-no" title="statement not covered" >        cur.add(1, 'days');</span>
+    }
+&nbsp;
+    // Now make one where we map date names to their date
+<span class="cstat-no" title="statement not covered" >    var tokens = dateString.split(" ");</span>
+<span class="cstat-no" title="statement not covered" >    tokens = _.map(tokens, <span class="fstat-no" title="function not covered" >function(part) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (dateNameMappings[part.toLowerCase()]) {</span>
+<span class="cstat-no" title="statement not covered" >            return dateNameMappings[part.toLowerCase()];</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            return part;</span>
+        }
+    });
+<span class="cstat-no" title="statement not covered" >    dateStrings.push(tokens.join(" "));</span>
+&nbsp;
+    // now make one wher we remove date names completely.
+<span class="cstat-no" title="statement not covered" >    tokens = dateString.split(" ");</span>
+<span class="cstat-no" title="statement not covered" >    tokens = _.map(tokens, <span class="fstat-no" title="function not covered" >function(part) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (dateNameMappings[part.toLowerCase()]) {</span>
+<span class="cstat-no" title="statement not covered" >            return "";</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            return part;</span>
+        }
+    });
+<span class="cstat-no" title="statement not covered" >    tokens = _.filter(tokens, <span class="fstat-no" title="function not covered" >function(i) {</span> <span class="cstat-no" title="statement not covered" >return i.length &gt; 0; </span>});</span>
+<span class="cstat-no" title="statement not covered" >    dateStrings.push(tokens.join(" "));</span>
+&nbsp;
+    // Now make some where we inject the year at the beginning
+<span class="cstat-no" title="statement not covered" >    var now = moment.utc();</span>
+<span class="cstat-no" title="statement not covered" >    year = now.format("YYYY");</span>
+<span class="cstat-no" title="statement not covered" >    month = now.format("MM");</span>
+<span class="cstat-no" title="statement not covered" >    dateStrings.slice().forEach(<span class="fstat-no" title="function not covered" >function(dateString) {</span></span>
+<span class="cstat-no" title="statement not covered" >        dateStrings.push("" + year + "-" + dateString);</span>
+<span class="cstat-no" title="statement not covered" >        dateStrings.push(dateString + "-" + year);</span>
+    });
+<span class="cstat-no" title="statement not covered" >    return dateStrings;</span>
+}
+&nbsp;
+// Make an attempt to parse a scheduling string. 
+//
+// Parameters:
+//     inputString: the string to try and parse 
+//     options: options for both this method and are passed along to 
+//         getRoundExtrema options
+//     options.warningHours: an integer specifying how many hours
+//         before the round end that we want to warn people about.
+<span class="fstat-no" title="function not covered" >function parseScheduling(inputString, options) {</span>
+<span class="cstat-no" title="statement not covered" >    var parts = getTokensScheduling(inputString);</span>
+&nbsp;
+    // Filter out word that we know we want to ignore.
+<span class="cstat-no" title="statement not covered" >    if (parts.length &lt; 3) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log("Unable to parse date: " + inputString);</span>
+<span class="cstat-no" title="statement not covered" >        throw new ScheduleParsingError();</span>
+    }
+&nbsp;
+    // Now build up some possible strings and try a bunch of patterns
+    // to find a date in our range.
+<span class="cstat-no" title="statement not covered" >    var extrema = getRoundExtrema(options);</span>
+<span class="cstat-no" title="statement not covered" >    var dateStrings = getPossibleDateStrings(parts.slice(2).join(" "), extrema);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var validInBoundsDate = [];</span>
+<span class="cstat-no" title="statement not covered" >    var validOutOfBoundsDate = [];</span>
+    // Using _.every and returning false to break out of loops
+    // checking every possible date format even after we have found
+    // a valid one is wasteful, so this allows us to short circuit that process.
+<span class="cstat-no" title="statement not covered" >    _.every(dateStrings, <span class="fstat-no" title="function not covered" >function(dateString) {</span></span>
+<span class="cstat-no" title="statement not covered" >        _.every(DATE_FORMATS, <span class="fstat-no" title="function not covered" >function(format) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var date = moment.utc(dateString, format, true);</span>
+<span class="cstat-no" title="statement not covered" >            if (!date.isValid()) {</span>
+<span class="cstat-no" title="statement not covered" >                return true;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            validOutOfBoundsDate.push(date);</span>
+            // TODO: This check will prevent us from publishing pairings
+            //       early AND having people announce their schedule early.
+            //       Which is unfortunate, but I haven't thought of an elegant
+            //       or easy way to allow for this. :/
+<span class="cstat-no" title="statement not covered" >            if (date.isBefore(extrema.start) || date.isAfter(extrema.end)) {</span>
+<span class="cstat-no" title="statement not covered" >                return true;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            validInBoundsDate.push(date);</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        });
+<span class="cstat-no" title="statement not covered" >        if (validInBoundsDate.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return true;</span>
+    });
+<span class="cstat-no" title="statement not covered" >    if (validInBoundsDate.length == 0 &amp;&amp; validOutOfBoundsDate.length == 0) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log("Unable to parse date: [" + inputString + "]");</span>
+<span class="cstat-no" title="statement not covered" >        throw new ScheduleParsingError();</span>
+    }
+&nbsp;
+    // strip out any punctuation from the usernames
+<span class="cstat-no" title="statement not covered" >    var white = parts[0].replace(/[@\.,\(\):]/g, '');</span>
+<span class="cstat-no" title="statement not covered" >    var black = parts[1].replace(/[@\.,\(\):]/g, '');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var date;</span>
+<span class="cstat-no" title="statement not covered" >    var outOfBounds = false;</span>
+<span class="cstat-no" title="statement not covered" >    var warn = false;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (validInBoundsDate.length == 0 &amp;&amp; validOutOfBoundsDate.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >        date = validOutOfBoundsDate[0];</span>
+<span class="cstat-no" title="statement not covered" >        outOfBounds = true;</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >        var date = validInBoundsDate[0];</span>
+<span class="cstat-no" title="statement not covered" >        if (date.isAfter(extrema.warning)) {</span>
+<span class="cstat-no" title="statement not covered" >            warn = true;</span>
+        }
+    }
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        white: white,
+        black: black,
+        date: date,
+        warn: warn,
+        outOfBounds: outOfBounds
+    };
+}
+&nbsp;
+// Calculate the extrema of the current round for both leagues.
+//
+// Each league has  slightly different requirements for when your
+// game must be played. This method will return the given start datetime
+// and end datetime for the round.
+//
+// Options:
+//     extrema.referenceDate: If this is provided it the round is guaranteed
+//       to include this date. Mostly used for tests.
+//     extrema.isoWeekday: The weekday after which games cannot be scheduled.
+//     extrema.hour: The hour after which games cannot be scheduled.
+//     extrema.hour: The weekday on which the pairings are released.
+//     extrema.warningHours: The amount of hours before the final scheduling
+//       cutoff during which we will warn users they are cutting it close.
+<span class="fstat-no" title="function not covered" >function getRoundExtrema(options) {</span>
+<span class="cstat-no" title="statement not covered" >    options = options || {};</span>
+<span class="cstat-no" title="statement not covered" >    extrema = {};</span>
+<span class="cstat-no" title="statement not covered" >    _.extend(extrema, EXTREMA_DEFAULTS, options.extrema);</span>
+&nbsp;
+    // Get the reference date, which is either today or the referenceDate
+    // from the options
+<span class="cstat-no" title="statement not covered" >    if (!extrema.referenceDate) {</span>
+<span class="cstat-no" title="statement not covered" >        roundStart = moment.utc();</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >        roundStart = moment(extrema.referenceDate).clone();</span>
+    }
+<span class="cstat-no" title="statement not covered" >    referenceDate = roundStart.clone()</span>
+    // Make it the right time of day.
+<span class="cstat-no" title="statement not covered" >    roundStart.hour(extrema.hour).minute(extrema.minute).second(0);</span>
+&nbsp;
+    // Find the first day that comes before our reference date
+    // which is on th same weekday as the round starts.
+<span class="cstat-no" title="statement not covered" >    while (roundStart.isoWeekday() != extrema.isoWeekday || roundStart.isAfter(referenceDate)) {</span>
+<span class="cstat-no" title="statement not covered" >        roundStart.subtract(1, 'days');</span>
+    }
+&nbsp;
+    // The end is always 7 days in advance
+<span class="cstat-no" title="statement not covered" >    var roundEnd = roundStart.clone().add(7, 'days');</span>
+<span class="cstat-no" title="statement not covered" >    var warningEnd = roundEnd.clone().subtract(extrema.warningHours, 'hours');</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        'start': roundStart,
+        'end': roundEnd,
+        'warning': warningEnd
+    };
+}
+&nbsp;
+// getRows is a client side implementation of the record-type results that we
+// got from the row based API. Instead, we now implement this in the following
+// manner:
+//   1. Query for all cells in a particular range.
+//   2. Asssume first row is a header row.
+//   3. Turn each subsequent row into an object, of key-values based on the header
+//   4. return rows.
+function getRows(spreadsheetConfig, options, sheetPredicate, callback) {
+    var doc = new GoogleSpreadsheet(spreadsheetConfig.key);
+&nbsp;
+    function getRowImplementation(err, info) {
+        var targetSheet = undefined;
+        doc.getInfo(function(err, info) {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (err) { <span class="cstat-no" title="statement not covered" >return callback(err, info); </span>}
+            // Find the last spreadsheet with the word "round" in the title.
+            // this ought to work for both tournaments
+            info.worksheets.forEach(function(sheet) {
+                if (sheetPredicate(sheet)) {
+                    targetSheet = sheet;
+                }
+            });
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!targetSheet) {
+<span class="cstat-no" title="statement not covered" >                callback("Unable to find target worksheet");</span>
+<span class="cstat-no" title="statement not covered" >                return;</span>
+            }
+            // Query for the appropriate row.
+            // Again, this ought to work for both tournaments
+            options = _.clone(options);
+            var defaults = {
+                'min-row': 1,
+                'max-row': 100,
+                'min-col': 1,
+                'max-col': 8,
+                'return-empty': true
+            }
+            options = _.defaults(options, defaults);
+            targetSheet.getCells(
+                options,
+                function(err, cells) {
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (err) { <span class="cstat-no" title="statement not covered" >return callback(err, cells); </span>}
+&nbsp;
+                    // Take the single list and turn it into rows
+                    var rows = [];
+                    cells.forEach(function(cell) {
+                        // Create the empty row if needed.
+                        if (!(cell.row in rows)) {
+                            rows[cell.row] = [];
+                        }
+                        rows[cell.row][cell.col] = cell;
+                    });
+&nbsp;
+                    // Convert each row into a record with keys
+                    var headerRow = rows[1];
+                    headerRow = _.map(headerRow, function(item, i) {
+                        if (item) {
+                            return item.value.toLowerCase();
+                        } else {
+                            return i;
+                        }
+                    });
+                    var recordRows = [];
+                    rows.slice(2).forEach(function(row) {
+                        recordRows.push(_.object(_.zip(headerRow, row)));
+                    });
+                    callback(undefined, recordRows);
+                }
+            );
+        });
+    }
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (spreadsheetConfig.serviceAccountAuth) {
+<span class="cstat-no" title="statement not covered" >        doc.useServiceAccountAuth(spreadsheetConfig.serviceAccountAuth, getRowImplementation);</span>
+    } else {
+        getRowImplementation();
+    }
+}
+&nbsp;
+// getPairingRows returns the pairing rows from the spreadsheet
+function getPairingRows(spreadsheetConfig, options, callback) {
+    return getRows(
+        spreadsheetConfig,
+        options,
+        function(sheet) {
+            return sheet.title.toLowerCase().indexOf("round") != -1;
+        },
+        callback
+    );
+}
+&nbsp;
+// Finds the given pairing in one of the team spreadsheets
+// callback gets three values: error, row, whether the pairing is reversed or not.
+<span class="fstat-no" title="function not covered" >function findPairing(spreadsheetConfig, white, black, callback) {</span>
+<span class="cstat-no" title="statement not covered" >    var options = {</span>
+        'min-col': 1,
+        'max-col': 7
+    };
+<span class="fstat-no" title="function not covered" >    function rowMatchesPairing(row) {</span>
+<span class="cstat-no" title="statement not covered" >        var rowBlack = row.black.value.toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >        var rowWhite = row.white.value.toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >        if (</span>
+            (rowBlack.indexOf(black) != -1 &amp;&amp; rowWhite.indexOf(white) != -1)
+        ) {
+<span class="cstat-no" title="statement not covered" >            return true;</span>
+        } else <span class="cstat-no" title="statement not covered" >if (</span>
+            (rowWhite.indexOf(black) != -1 &amp;&amp; rowBlack.indexOf(white) != -1)
+        ) {
+<span class="cstat-no" title="statement not covered" >            return true;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return false;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    getPairingRows(</span>
+        spreadsheetConfig,
+        options,
+<span class="fstat-no" title="function not covered" >        function(err, rows) {</span>
+<span class="cstat-no" title="statement not covered" >            var rows = _.filter(rows, rowMatchesPairing);</span>
+            // Only update it if we found an exact match
+<span class="cstat-no" title="statement not covered" >            if (rows.length &gt; 1) {</span>
+<span class="cstat-no" title="statement not covered" >                return callback("Unable to find pairing. More than one row was returned!");</span>
+            } else <span class="cstat-no" title="statement not covered" >if(rows.length &lt; 1) {</span>
+<span class="cstat-no" title="statement not covered" >                return callback("Unable to find pairing. No rows were returned!");</span>
+            }
+<span class="cstat-no" title="statement not covered" >            var row = rows[0];</span>
+<span class="cstat-no" title="statement not covered" >            var rowBlack = row.black.value.toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >            var rowWhite = row.white.value.toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >            var reversed = false;</span>
+<span class="cstat-no" title="statement not covered" >            if (rowWhite.indexOf(black) != -1) {</span>
+<span class="cstat-no" title="statement not covered" >                reversed = true</span>
+            }
+<span class="cstat-no" title="statement not covered" >            callback(undefined, row, reversed);</span>
+        }
+    );
+}
+&nbsp;
+// Update the schedule
+<span class="fstat-no" title="function not covered" >function updateSchedule(spreadsheetConfig, schedulingConfig, schedule, callback) {</span>
+<span class="cstat-no" title="statement not covered" >    var white = schedule.white;</span>
+<span class="cstat-no" title="statement not covered" >    var black = schedule.black;</span>
+<span class="cstat-no" title="statement not covered" >    var date = schedule.date;</span>
+<span class="cstat-no" title="statement not covered" >    findPairing(spreadsheetConfig, white, black, <span class="fstat-no" title="function not covered" >function(err, row, reversed) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (err) {</span>
+<span class="cstat-no" title="statement not covered" >            return callback(err);</span>
+        }
+        // This portion is specific to the team tournament
+<span class="cstat-no" title="statement not covered" >        var scheduleCell = row[spreadsheetConfig.scheduleColname];</span>
+<span class="cstat-no" title="statement not covered" >        scheduleCell.value = date.format(schedulingConfig.format);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        scheduleCell.save(<span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return callback(err, reversed);</span>
+        });
+    });
+}
+&nbsp;
+// parse the input string for a results update
+<span class="fstat-no" title="function not covered" >function parseResult(inputString){</span>
+<span class="cstat-no" title="statement not covered" >    var tokens = getTokensResult(inputString);   </span>
+<span class="cstat-no" title="statement not covered" >    var result = findResult(tokens);</span>
+<span class="cstat-no" title="statement not covered" >    var players = findPlayers(tokens);</span>
+    
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        "white": players.white,
+        "black": players.black,
+        "result": result,
+    };
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getTokensResult(inputString){</span>
+<span class="cstat-no" title="statement not covered" >    return inputString.split(" ");</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function findResult(tokens){</span>
+<span class="cstat-no" title="statement not covered" >    var result;</span>
+<span class="cstat-no" title="statement not covered" >    _.some(tokens, <span class="fstat-no" title="function not covered" >function(token){</span></span>
+<span class="cstat-no" title="statement not covered" >        return (result = VALID_RESULTS[token.toUpperCase()]) ? true : false;</span>
+    });
+<span class="cstat-no" title="statement not covered" >    return result;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function findPlayers(tokens){</span>
+    // in reality, the order is arbitrary.
+    // just assuming first I find is white, the second is black
+<span class="cstat-no" title="statement not covered" >    var players = {};</span>
+<span class="cstat-no" title="statement not covered" >    var playerTokens = filterPlayerTokens(tokens);</span>
+&nbsp;
+    //assuming we found 2 tokens, we should convert them to player names
+<span class="cstat-no" title="statement not covered" >    if(playerTokens.length == 2){</span>
+        //remove punctuation and store. this fixes losts of stuff.
+        //most frequent issue is the : added after a name by slack
+<span class="cstat-no" title="statement not covered" >        players.white = playerTokens[0].replace(/[:,.-]/, "");</span>
+<span class="cstat-no" title="statement not covered" >        players.black = playerTokens[1].replace(/[:,.-]/, "");</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return players;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function filterPlayerTokens(tokens){</span>
+<span class="cstat-no" title="statement not covered" >    return _.filter(tokens, <span class="fstat-no" title="function not covered" >function(token){</span></span>
+        //matches slack uer ids: &lt;@[A-Z0-9]&gt;[:]*
+<span class="cstat-no" title="statement not covered" >        return /^\&lt;@[A-Z0-9]+\&gt;[:,.-]*$/.test(token);</span>
+    });
+}
+&nbsp;
+//this assumes it is being given a valid result - that is th contract
+//error handling for a bad result should happen outside this function
+<span class="fstat-no" title="function not covered" >function updateResult(spreadsheetConfig, result, callback){</span>
+<span class="cstat-no" title="statement not covered" >    var white = result.white;</span>
+<span class="cstat-no" title="statement not covered" >    var black = result.black;</span>
+<span class="cstat-no" title="statement not covered" >    var resultString = result.result;</span>
+<span class="cstat-no" title="statement not covered" >    var gamelinkID = result.gamelinkID;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    findPairing(</span>
+        spreadsheetConfig, 
+        white.name, 
+        black.name, 
+<span class="fstat-no" title="function not covered" >        function(err, row, reversed){</span>
+<span class="cstat-no" title="statement not covered" >            if(err){</span>
+<span class="cstat-no" title="statement not covered" >                return callback(err);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            var resultCell = row[spreadsheetConfig.resultsColname];</span>
+&nbsp;
+            //a gamelink was passed in and the names were reversed
+<span class="cstat-no" title="statement not covered" >            if(gamelinkID &amp;&amp; reversed){</span>
+                //this is an error - games must be played by proper colors
+<span class="cstat-no" title="statement not covered" >                return callback("the colors are reversed.", true);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if(resultString != "-"){</span>
+                //this is just the addition of a result
+                //we will use the gamelink to verify the result if we have it
+<span class="cstat-no" title="statement not covered" >                if(reversed){</span>
+                    //switch the result
+<span class="cstat-no" title="statement not covered" >                    var lhs = resultString.split('-')[0];</span>
+<span class="cstat-no" title="statement not covered" >                    var rhs = resultString.split('-')[1];</span>
+<span class="cstat-no" title="statement not covered" >                    resultString = rhs + '-' + lhs;</span>
+                }
+            }
+&nbsp;
+            //get the formula, if there is one
+<span class="cstat-no" title="statement not covered" >            var formula = resultCell.formula;</span>
+            
+<span class="cstat-no" title="statement not covered" >            var gamelink;</span>
+<span class="cstat-no" title="statement not covered" >            if(!gamelinkID &amp;&amp; formula &amp;&amp; formula.toUpperCase().includes("HYPERLINK")){</span>
+                //there is no gamelink, fill from the formula
+<span class="cstat-no" title="statement not covered" >                gamelink = formula.split("\"")[1];</span>
+            }else <span class="cstat-no" title="statement not covered" >if(!result.gamelinkID){</span>
+                //no gamelink and no formula
+<span class="cstat-no" title="statement not covered" >                gamelink = '';</span>
+            }else{
+<span class="cstat-no" title="statement not covered" >                gamelink =  "http://en.lichess.org/" + result.gamelinkID;</span>
+            }
+&nbsp;
+            //if no game link is found, just post the result
+<span class="cstat-no" title="statement not covered" >            if(gamelink == ''){</span>
+<span class="cstat-no" title="statement not covered" >                resultCell.value = resultString;</span>
+            }else{
+<span class="cstat-no" title="statement not covered" >                resultCell.formula = '=HYPERLINK("' + gamelink + '","' + resultString + '")';</span>
+            }
+&nbsp;
+            //save the cell in the spreadsheet
+<span class="cstat-no" title="statement not covered" >            resultCell.save(<span class="fstat-no" title="function not covered" >function(err){</span></span>
+<span class="cstat-no" title="statement not covered" >                return callback(err, reversed);</span>
+            });
+        }
+    );
+}
+&nbsp;
+//given the input text from a essage
+<span class="fstat-no" title="function not covered" >function parseGamelink(messageText){</span>
+    //split it into tokens separated by white space and slashes
+<span class="cstat-no" title="statement not covered" >    var tokens = messageText.split(/[\&lt;\&gt;\|\/\s]/);</span>
+<span class="cstat-no" title="statement not covered" >    var foundBaseURL = false;</span>
+<span class="cstat-no" title="statement not covered" >    var gamelinkID;</span>
+&nbsp;
+    //for each token, walk the list looking for a lichess url
+<span class="cstat-no" title="statement not covered" >    tokens.some(<span class="fstat-no" title="function not covered" >function(token){</span></span>
+        //if previously token was a lichess url
+        //this token should be the gamelinkID
+<span class="cstat-no" title="statement not covered" >        if(foundBaseURL){</span>
+<span class="cstat-no" title="statement not covered" >            gamelinkID = token.replace('&gt;', '');</span>
+            //some tokens will have a &gt; if its the last token
+            //return true to stop iterating
+<span class="cstat-no" title="statement not covered" >            return true;</span>
+        }
+        //current token is the base of the lichess url
+<span class="cstat-no" title="statement not covered" >        if(token.includes("lichess.org")){</span>
+<span class="cstat-no" title="statement not covered" >            foundBaseURL = true;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return false;</span>
+    });
+<span class="cstat-no" title="statement not covered" >    return { gamelinkID: gamelinkID };</span>
+}
+&nbsp;
+//given a pairing, get a game link if one already exists
+<span class="fstat-no" title="function not covered" >function fetchPairingGameLink(spreadsheetConfig, result, callback){</span>
+<span class="cstat-no" title="statement not covered" >    var white = result.white;</span>
+<span class="cstat-no" title="statement not covered" >    var black = result.black;</span>
+&nbsp;
+    //given a pairing, white and black, get the row in the spreadsheet
+<span class="cstat-no" title="statement not covered" >    findPairing(</span>
+        spreadsheetConfig,
+        white.name,
+        black.name,
+<span class="fstat-no" title="function not covered" >        function(err, row){</span>
+<span class="cstat-no" title="statement not covered" >            if(err){</span>
+<span class="cstat-no" title="statement not covered" >                callback(err);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            resultCell = row[spreadsheetConfig.resultsColname];</span>
+<span class="cstat-no" title="statement not covered" >            var formula = resultCell.formula;</span>
+<span class="cstat-no" title="statement not covered" >            if(formula &amp;&amp; formula.toUpperCase().includes("HYPERLINK")){</span>
+<span class="cstat-no" title="statement not covered" >                callback(err, formula.split("\"")[1]);</span>
+            }else{
+<span class="cstat-no" title="statement not covered" >                callback(err, undefined);</span>
+            }
+        }
+    );
+}
+&nbsp;
+// Given '=HYPERLINK("http://en.lichess.org/FwYcks48","1-0")'
+// return {'text': '1-0', 'url': 'http://en.lichess.org/FwYcks48'}
+<span class="fstat-no" title="function not covered" >function parseHyperlink(hyperlink) {</span>
+<span class="cstat-no" title="statement not covered" >    var results = {</span>
+        'text': '',
+        'href': ''
+    };
+<span class="cstat-no" title="statement not covered" >    if(!hyperlink.toUpperCase().includes("HYPERLINK")) {</span>
+<span class="cstat-no" title="statement not covered" >        return results;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    var parts = hyperlink.split("\"");</span>
+<span class="cstat-no" title="statement not covered" >    if (parts.length != 5) {</span>
+<span class="cstat-no" title="statement not covered" >        return results;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (parts[0].toUpperCase() != "=HYPERLINK(") {</span>
+<span class="cstat-no" title="statement not covered" >        return results;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    results['href'] = parts[1];</span>
+<span class="cstat-no" title="statement not covered" >    results['text'] = parts[3];</span>
+<span class="cstat-no" title="statement not covered" >    return results;</span>
+}
+&nbsp;
+module.exports.getRows = getRows;
+module.exports.getPairingRows = getPairingRows;
+module.exports.getRoundExtrema = getRoundExtrema;
+module.exports.parseScheduling = parseScheduling;
+module.exports.parseResult = parseResult;
+module.exports.parseGamelink = parseGamelink;
+module.exports.parseHyperlink = parseHyperlink;
+module.exports.updateSchedule = updateSchedule;
+module.exports.updateResult = updateResult;
+module.exports.fetchPairingGameLink = fetchPairingGameLink;
+module.exports.ScheduleParsingError = ScheduleParsingError;
+module.exports.PairingError = PairingError;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 18 2016 16:23:11 GMT-0400 (EDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,1154 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Chesster/slack.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">Chesster/</a> slack.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.05% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>36/189</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/48</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/49</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.05% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>36/189</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//------------------------------------------------------------------------------
+// Bot / Slack related helpers
+//------------------------------------------------------------------------------
+var Q = require("q");
+var Botkit = require('botkit');
+var _ = require("underscore");
+var league = require("./league.js");
+var fuzzy = require("./fuzzy_match.js");
+&nbsp;
+<span class="fstat-no" title="function not covered" >function StopControllerError () {</span>}
+StopControllerError.prototype = new Error();
+&nbsp;
+//
+var MILISECOND = 1;
+var SECONDS = 1000 * MILISECOND;
+&nbsp;
+var users = {
+    byName: {},
+    byId: {},
+    getId: <span class="fstat-no" title="function not covered" >function(name){</span>
+<span class="cstat-no" title="statement not covered" >        return this.byName[name].id;</span>
+    },
+    getIdString: <span class="fstat-no" title="function not covered" >function(name){</span>
+<span class="cstat-no" title="statement not covered" >        return "&lt;@"+this.getId(name)+"&gt;";</span>
+    },
+    getByNameOrID: <span class="fstat-no" title="function not covered" >function(nameOrId) {</span>
+<span class="cstat-no" title="statement not covered" >        return this.byId[nameOrId] || this.byName[nameOrId];</span>
+    }
+};
+var channels = {
+    byName: {},
+    byId: {},
+    getId: <span class="fstat-no" title="function not covered" >function(name){</span>
+<span class="cstat-no" title="statement not covered" >        return this.byName[name].id;</span>
+    },
+    getIdString: <span class="fstat-no" title="function not covered" >function(name){</span>
+<span class="cstat-no" title="statement not covered" >        return "&lt;#"+this.getId(name)+"&gt;";</span>
+    }
+};
+&nbsp;
+<span class="fstat-no" title="function not covered" >function updatesUsers(bot){</span>
+    // @ https://api.slack.com/methods/users.list
+<span class="cstat-no" title="statement not covered" >    bot.api.users.list({}, <span class="fstat-no" title="function not covered" >function (err, response) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (err) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error(err);</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (response.hasOwnProperty('members') &amp;&amp; response.ok) {</span>
+<span class="cstat-no" title="statement not covered" >            var byName = {};</span>
+<span class="cstat-no" title="statement not covered" >            var byId = {};</span>
+<span class="cstat-no" title="statement not covered" >            var total = response.members.length;</span>
+<span class="cstat-no" title="statement not covered" >            for (var i = 0; i &lt; total; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                var member = response.members[i];</span>
+<span class="cstat-no" title="statement not covered" >                byName[member.name] = member;</span>
+<span class="cstat-no" title="statement not covered" >                byId[member.id] = member</span>
+            }
+<span class="cstat-no" title="statement not covered" >            users.byName = byName;</span>
+<span class="cstat-no" title="statement not covered" >            users.byId = byId;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        console.log("info: got users");</span>
+    });
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function updateChannels(bot){</span>
+    // @ https://api.slack.com/methods/channels.list
+<span class="cstat-no" title="statement not covered" >    bot.api.channels.list({}, <span class="fstat-no" title="function not covered" >function (err, response) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (err) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error(err);</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (response.hasOwnProperty('channels') &amp;&amp; response.ok) {</span>
+<span class="cstat-no" title="statement not covered" >            var byName = {};</span>
+<span class="cstat-no" title="statement not covered" >            var byId = {};</span>
+<span class="cstat-no" title="statement not covered" >            var total = response.channels.length;</span>
+<span class="cstat-no" title="statement not covered" >            for (var i = 0; i &lt; total; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                var channel = response.channels[i];</span>
+<span class="cstat-no" title="statement not covered" >                byName[channel.name] = channel;</span>
+<span class="cstat-no" title="statement not covered" >                byId[channel.id] = channel;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            channels.byName = byName;</span>
+<span class="cstat-no" title="statement not covered" >            channels.byId = byId;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        console.log("info: got channels");</span>
+    });
+&nbsp;
+}
+&nbsp;
+&nbsp;
+&nbsp;
+/* 
+   updates the user list
+   updates the channel lists
+   then repeats in new thread
+   
+   if it encounters an error it will exit the process with exit code 1
+*/
+var count = 0;
+<span class="fstat-no" title="function not covered" >function refresh(bot, delay, config) {</span>
+<span class="cstat-no" title="statement not covered" >    return criticalPath(Q.fcall(<span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >        console.log("doing refresh " + count++);</span>
+<span class="cstat-no" title="statement not covered" >        bot.rtm.ping();</span>
+        
+<span class="cstat-no" title="statement not covered" >        updatesUsers(bot);</span>
+<span class="cstat-no" title="statement not covered" >        updateChannels(bot);</span>
+<span class="cstat-no" title="statement not covered" >        _.each(league.getAllLeagues(config), <span class="fstat-no" title="function not covered" >function(l) {</span></span>
+<span class="cstat-no" title="statement not covered" >            l.refresh();</span>
+        });
+<span class="cstat-no" title="statement not covered" >        setTimeout(<span class="fstat-no" title="function not covered" >function(){ </span></span>
+<span class="cstat-no" title="statement not covered" >            refresh(bot, delay, config);</span>
+        }, delay);
+    }));
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function criticalPath(promise){</span>
+<span class="cstat-no" title="statement not covered" >    exceptionLogger(promise).catch(<span class="fstat-no" title="function not covered" >function(e) {</span></span>
+<span class="cstat-no" title="statement not covered" >        console.error("An exception was caught in a critical code-path. I am going down.");</span>
+<span class="cstat-no" title="statement not covered" >        process.exit(1);</span>
+    });
+<span class="cstat-no" title="statement not covered" >    return promise;</span>
+}
+&nbsp;
+// a promise and ensures that uncaught exceptions are logged.
+<span class="fstat-no" title="function not covered" >function exceptionLogger(promise){</span>
+<span class="cstat-no" title="statement not covered" >    var deferred = Q.defer();</span>
+<span class="cstat-no" title="statement not covered" >    promise.catch(<span class="fstat-no" title="function not covered" >function(e) {</span></span>
+<span class="cstat-no" title="statement not covered" >        var error_log = "An error occurred:" +</span>
+            "\nDatetime: " + new Date() +
+            "\nError: " + JSON.stringify(e) +
+            "\nStack: " + e.stack;
+<span class="cstat-no" title="statement not covered" >        console.error(error_log);</span>
+<span class="cstat-no" title="statement not covered" >        deferred.reject(e);</span>
+    });
+<span class="cstat-no" title="statement not covered" >    return deferred.promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function botExceptionHandler(bot, message, promise){</span>
+<span class="cstat-no" title="statement not covered" >    exceptionLogger(promise).catch(<span class="fstat-no" title="function not covered" >function(e){</span></span>
+<span class="cstat-no" title="statement not covered" >        console.error("Message: " + JSON.stringify(message));</span>
+<span class="cstat-no" title="statement not covered" >        bot.reply(message, "Something has gone terribly terribly wrong. Please forgive me.");</span>
+        
+    });
+<span class="cstat-no" title="statement not covered" >    return promise;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function localTime(datetime) {</span>
+<span class="cstat-no" title="statement not covered" >    return datetime.utcOffset(this.tz_offset / 60);</span>
+}
+&nbsp;
+//------------------------------------------------------------------------------
+// A helper to determine if the user is a moderator
+//------------------------------------------------------------------------------
+<span class="fstat-no" title="function not covered" >function isModerator(message) {</span>
+<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (!message.league) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("isModerator requires a league to be attached to the message. Use the withLeague middleware");</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return message.league.isModerator(this.name);</span>
+    }
+}
+&nbsp;
+&nbsp;
+//------------------------------------------------------------------------------
+// Various middleware
+//------------------------------------------------------------------------------
+<span class="fstat-no" title="function not covered" >function requiresModerator(bot, message, config) {</span>
+<span class="cstat-no" title="statement not covered" >    return Q.fcall(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (typeof message.league == 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("requiresModerator MUST be called after withLeague.");</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (!message.league) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Not in a league context");</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (!message.player.isModerator()) {</span>
+<span class="cstat-no" title="statement not covered" >            bot.reply(message, "You are not a moderator of the {name} league. Your temerity has been logged.".format({</span>
+                name: message.league.options.name
+            }));
+<span class="cstat-no" title="statement not covered" >            throw new StopControllerError("Not a moderator.");</span>
+        }
+    });
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function withLeague(bot, message, config) {</span>
+<span class="cstat-no" title="statement not covered" >    return Q.fcall(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >        message.league = null;</span>
+&nbsp;
+        // See if the person asked for a specific league first
+&nbsp;
+        // generate a set of possible target leagues
+<span class="cstat-no" title="statement not covered" >        var allLeagues = league.getAllLeagues(config);</span>
+<span class="cstat-no" title="statement not covered" >        var leagueTargets = [];</span>
+<span class="cstat-no" title="statement not covered" >        var targetToLeague = {};</span>
+<span class="fstat-no" title="function not covered" >        function add_target(l, target) {</span>
+<span class="cstat-no" title="statement not covered" >            leagueTargets.push(target);</span>
+<span class="cstat-no" title="statement not covered" >            targetToLeague[target] = l;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        _.each(allLeagues, <span class="fstat-no" title="function not covered" >function(l) {</span></span>
+<span class="cstat-no" title="statement not covered" >            add_target(l, l.options.name);</span>
+<span class="cstat-no" title="statement not covered" >            _.each(l.options.also_known_as, <span class="fstat-no" title="function not covered" >function(aka) {</span></span>
+<span class="cstat-no" title="statement not covered" >                add_target(l, aka);</span>
+            });
+        });
+&nbsp;
+        // Now fuzzy match them based on each arg in the message
+<span class="cstat-no" title="statement not covered" >        var matches = [];</span>
+<span class="cstat-no" title="statement not covered" >        var args = message.text.split(" ");</span>
+<span class="cstat-no" title="statement not covered" >        _.each(args, <span class="fstat-no" title="function not covered" >function(arg) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var results = fuzzy.rank_choices(arg.toLowerCase(), leagueTargets, true);</span>
+<span class="cstat-no" title="statement not covered" >            _.each(results, <span class="fstat-no" title="function not covered" >function(match) {</span></span>
+<span class="cstat-no" title="statement not covered" >                matches.push(match);</span>
+            });
+        });
+<span class="cstat-no" title="statement not covered" >        var bestMatches = fuzzy.findBestMatches(matches, true);</span>
+<span class="cstat-no" title="statement not covered" >        var possibleLeagues = {};</span>
+<span class="cstat-no" title="statement not covered" >        _.each(bestMatches, <span class="fstat-no" title="function not covered" >function(match) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var l = targetToLeague[match[1]];</span>
+<span class="cstat-no" title="statement not covered" >            possibleLeagues[l.options.name] = l;</span>
+        });
+<span class="cstat-no" title="statement not covered" >        var matchingLeagueNames = _.keys(possibleLeagues);</span>
+<span class="cstat-no" title="statement not covered" >        if (matchingLeagueNames.length &gt; 1) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("Ambiguous leagues.");</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if (matchingLeagueNames.length == 1) {</span>
+<span class="cstat-no" title="statement not covered" >            l = _.values(possibleLeagues)[0];</span>
+<span class="cstat-no" title="statement not covered" >            message.league = l;</span>
+<span class="cstat-no" title="statement not covered" >            return l;</span>
+        }
+&nbsp;
+        // If they didn't ask for a specific league, then we will use the channel
+        // to determine it
+<span class="cstat-no" title="statement not covered" >        var channel = channels.byId[message.channel];</span>
+<span class="cstat-no" title="statement not covered" >        if (channel &amp;&amp; channel.name) {</span>
+<span class="cstat-no" title="statement not covered" >            var target_league = config.channel_map[channel.name];</span>
+<span class="cstat-no" title="statement not covered" >            l = league.getLeague(target_league, config);</span>
+<span class="cstat-no" title="statement not covered" >            if (l) {</span>
+<span class="cstat-no" title="statement not covered" >                message.league = l;</span>
+<span class="cstat-no" title="statement not covered" >                return l;</span>
+            }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return;</span>
+    });
+}
+<span class="fstat-no" title="function not covered" >function requiresLeague(bot, message, config) {</span>
+<span class="cstat-no" title="statement not covered" >    return withLeague(bot, message, config).then(<span class="fstat-no" title="function not covered" >function(l) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (!l || !message.league) {</span>
+<span class="cstat-no" title="statement not covered" >            bot.reply(message, "This command requires you to specify the league you are interested in. Please include that next time");</span>
+<span class="cstat-no" title="statement not covered" >            throw new StopControllerError("No league specified");</span>
+        }
+    });
+}
+&nbsp;
+&nbsp;
+//------------------------------------------------------------------------------
+// A controller wrapper.
+//------------------------------------------------------------------------------
+DEFAULT_HEARS_OPTIONS = {
+    middleware: []
+};
+<span class="fstat-no" title="function not covered" >function hears(options, callback) {</span>
+<span class="cstat-no" title="statement not covered" >    var self = this;</span>
+<span class="cstat-no" title="statement not covered" >    var options = _.extend({}, DEFAULT_HEARS_OPTIONS, options);</span>
+<span class="cstat-no" title="statement not covered" >    self.controller.hears(options.patterns, options.messageTypes, <span class="fstat-no" title="function not covered" >function(bot, message) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return botExceptionHandler(bot, message, Q.fcall(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            message.player = users.getByNameOrID(message.user);</span>
+            // This will occur if a new player uses a chesster command
+            // within their first 2 minutes of having joined. :)
+            // we can fix this by loooking for joins to #general and ensuring
+            // our users dict is up to date.
+<span class="cstat-no" title="statement not covered" >            if (!message.player) {</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error("Couldn't find a valid user??");</span>
+            }
+<span class="cstat-no" title="statement not covered" >            message.player.localTime = localTime;</span>
+<span class="cstat-no" title="statement not covered" >            message.player.isModerator = isModerator(message);</span>
+<span class="cstat-no" title="statement not covered" >            return Q.all(</span>
+                _.map(options.middleware, <span class="fstat-no" title="function not covered" >function(middleware) {</span>
+<span class="cstat-no" title="statement not covered" >                    return middleware(bot, message, self.config);</span>
+                })
+            ).then(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >                return callback(bot, message);</span>
+            }, <span class="fstat-no" title="function not covered" >function(error) {</span>
+<span class="cstat-no" title="statement not covered" >                if(error instanceof StopControllerError) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.error("Middleware asked to not process controller callback: " + JSON.stringify(error));</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    throw error;</span>
+                }
+            });
+&nbsp;
+        }));
+    });
+}
+DEFAULT_ON_OPTIONS = {
+    middleware: []
+};
+<span class="fstat-no" title="function not covered" >function on(options, callback) {</span>
+<span class="cstat-no" title="statement not covered" >    var self = this;</span>
+<span class="cstat-no" title="statement not covered" >    var options = _.extend({}, DEFAULT_ON_OPTIONS, options);</span>
+<span class="cstat-no" title="statement not covered" >    self.controller.on(options.event, <span class="fstat-no" title="function not covered" >function(bot, message) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return botExceptionHandler(bot, message, Q.fcall(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            message.player = users.getByNameOrID(message.user);</span>
+<span class="cstat-no" title="statement not covered" >            if (message.player) {</span>
+<span class="cstat-no" title="statement not covered" >                message.player.localTime = localTime;</span>
+<span class="cstat-no" title="statement not covered" >                message.player.isModerator = isModerator(message);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return Q.all(</span>
+                _.map(options.middleware, <span class="fstat-no" title="function not covered" >function(middleware) {</span>
+<span class="cstat-no" title="statement not covered" >                    return middleware(bot, message, self.config);</span>
+                })
+            ).then(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >                return callback(bot, message);</span>
+            }, <span class="fstat-no" title="function not covered" >function(error) {</span>
+<span class="cstat-no" title="statement not covered" >                if(error instanceof StopControllerError) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.error("Middleware asked to not process controller callback: " + JSON.stringify(error));</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    throw error;</span>
+                }
+            });
+&nbsp;
+        }));
+    });
+}
+&nbsp;
+&nbsp;
+DEFAULT_BOT_OPTIONS = {
+    debug: false,
+    config_file: "./config.js"
+};
+&nbsp;
+<span class="fstat-no" title="function not covered" >function Bot(options) {</span>
+<span class="cstat-no" title="statement not covered" >    var self = this;</span>
+<span class="cstat-no" title="statement not covered" >    self.options = _.extend({}, DEFAULT_BOT_OPTIONS, options);</span>
+<span class="cstat-no" title="statement not covered" >    console.log("Loading config from: " + self.options.config_file);</span>
+<span class="cstat-no" title="statement not covered" >    self.config = require(self.options.config_file).config;</span>
+<span class="cstat-no" title="statement not covered" >    if (!self.config.token) {</span>
+<span class="cstat-no" title="statement not covered" >        console.error('Failed to load token from: ' + config_file);</span>
+<span class="cstat-no" title="statement not covered" >        throw new Error("A token must be specified in the configuration file");</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    self.controller = Botkit.slackbot({</span>
+        debug: self.options.debug
+    });
+<span class="cstat-no" title="statement not covered" >    self.controller.spawn({</span>
+      token: self.config.token
+    }).startRTM(<span class="fstat-no" title="function not covered" >function(err, bot) {</span>
+<span class="cstat-no" title="statement not covered" >        if (err) {</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error(err);</span>
+        }
+&nbsp;
+        //refresh your user and channel list every 2 minutes
+        //would be nice if this was push model, not poll but oh well.
+<span class="cstat-no" title="statement not covered" >        refresh(bot, 120 * SECONDS, self.config);</span>
+&nbsp;
+    });
+<span class="cstat-no" title="statement not covered" >    self.hears = hears;</span>
+<span class="cstat-no" title="statement not covered" >    self.on = on;</span>
+}
+&nbsp;
+module.exports.users = users;
+module.exports.channels = channels;
+module.exports.withLeague = withLeague;
+module.exports.requiresModerator = requiresModerator;
+module.exports.requiresLeague = requiresLeague;
+module.exports.Bot = Bot;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 18 2016 16:23:11 GMT-0400 (EDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

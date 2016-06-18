@@ -1,4 +1,9 @@
 language: node_js
 node_js: "5"
 install: npm install
-script: mocha --timeout 5000
+script: istanbul cover node_modules/mocha/bin/_mocha
+addons:
+    code_climate:
+        repo_token: 839098ed67bdd27113e281bd1dc5cdd25ad5a4bd02b0ee05af0b3cf0e24655fd
+after_script:
+  - codeclimate-test-reporter < coverage/lcov.info
